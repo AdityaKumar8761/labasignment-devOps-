@@ -1,0 +1,30 @@
+name: Campus Event Manager Validation
+
+on:
+    push:
+       types: [ opened, closed, reopened ]
+       branch:
+          -main
+          -feature/workflow
+    workflow_dispatch:
+
+              
+    pull_request:
+         types: [ opened, closed, reopened ]
+         branches:
+             - main
+             - feature/workflow
+    workflow_dispatch:
+        
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Show the trigger
+              run: echo "This workflow was triggered by a(n) ${{ github.event_name }} event."
+              run: npm ci
+              run: npm test
+  
+
+
+
